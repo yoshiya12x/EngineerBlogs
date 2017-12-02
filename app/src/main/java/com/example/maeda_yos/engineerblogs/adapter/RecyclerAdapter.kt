@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.maeda_yos.engineerblogs.R
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
-import com.example.maeda_yos.engineerblogs.util.RmpUtil
 import com.prof.rssparser.Article
 
 @Suppress("CAST_NEVER_SUCCEEDS")
@@ -32,16 +31,18 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        val rmpUtil = RmpUtil()
-        holder!!.itemTitle!!.text = this.articles!![position].title
-        holder.itemAuthor!!.text = this.articles!![position].author
-        holder.itemText!!.text = this.articles!![position].description
+        holder?.itemTitle?.text = this.articles!![position].title
+        holder?.itemAuthor?.text = this.articles!![position].author
+        holder?.itemText?.text = this.articles!![position].description
+        holder?.itemView?.setOnClickListener{ v ->
+            listener?.onRecyclerViewClick(v, this.articles!![position].link)
+        }
     }
 
     override fun getItemCount(): Int = articles!!.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        return ViewHolder(this.inflater!!.inflate(
+        return ViewHolder(this.inflater?.inflate(
                 R.layout.article_item,
                 parent,
                 false

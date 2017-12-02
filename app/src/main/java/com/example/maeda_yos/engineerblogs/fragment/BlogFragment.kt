@@ -1,14 +1,16 @@
 package com.example.maeda_yos.engineerblogs.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.example.maeda_yos.engineerblogs.R
+import com.example.maeda_yos.engineerblogs.activity.ArticleActivity
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 import com.example.maeda_yos.engineerblogs.rss.RssParser
 import com.ogaclejapan.smarttablayout.utils.v4.Bundler
@@ -35,6 +37,7 @@ class BlogFragment : Fragment(), OnRecyclerListener {
         val view = inflater!!.inflate(R.layout.content_blog, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         return view
     }
 
@@ -49,8 +52,10 @@ class BlogFragment : Fragment(), OnRecyclerListener {
         rssParser.setContents(activity, this, recyclerView)
     }
 
-    override fun onRecyclerViewClick(view: View, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onRecyclerViewClick(view: View, url: String) {
+        val intent = Intent(this.context, ArticleActivity::class.java)
+        intent.putExtra("url", url)
+        startActivity(intent)
     }
 
     companion object {
