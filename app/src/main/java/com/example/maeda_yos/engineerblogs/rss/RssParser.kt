@@ -3,9 +3,9 @@ package com.example.maeda_yos.engineerblogs.rss
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import com.example.maeda_yos.engineerblogs.adapter.RecyclerAdapter
+import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 import com.prof.rssparser.Article
 import com.prof.rssparser.Parser
-import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 
 /**
  * Created by maeda-yos on 2017/11/18.

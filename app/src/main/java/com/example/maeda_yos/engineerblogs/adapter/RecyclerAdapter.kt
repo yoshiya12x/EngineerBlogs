@@ -2,17 +2,14 @@ package com.example.maeda_yos.engineerblogs.adapter
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.example.maeda_yos.engineerblogs.R
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 import com.example.maeda_yos.engineerblogs.util.RmpUtil
 import com.prof.rssparser.Article
-import com.squareup.picasso.Picasso
 
 @Suppress("CAST_NEVER_SUCCEEDS")
 
@@ -36,9 +33,9 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         val rmpUtil = RmpUtil()
-        System.out.println(rmpUtil.getImgUrl(this.articles!![position].description))
-        Picasso.with(context).load(rmpUtil.getImgUrl(this.articles!![position].description)).resize(750, 300).into(holder!!.itemThumbnail)
-        holder.itemText!!.text = this.articles!![position].link
+        holder!!.itemTitle!!.text = this.articles!![position].title
+        holder.itemAuthor!!.text = this.articles!![position].author
+        holder.itemText!!.text = this.articles!![position].description
     }
 
     override fun getItemCount(): Int = articles!!.size
@@ -54,12 +51,14 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
 
         var itemText: TextView? = null
-        var itemThumbnail: ImageView? = null
+        var itemTitle: TextView? = null
+        var itemAuthor: TextView? = null
 
         init {
             if (itemView != null) {
                 itemText = itemView.findViewById(R.id.list_item_text)
-                itemThumbnail = itemView.findViewById(R.id.list_item_thumbnail)
+                itemTitle = itemView.findViewById(R.id.list_item_title)
+                itemAuthor = itemView.findViewById(R.id.list_item_author)
             }
         }
     }

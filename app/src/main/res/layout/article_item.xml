@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/rmp_article_margin"
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_margin="@dimen/rmp_img_margin"
-        android:id="@+id/list_item_thumbnail"
+    <TextView
+        android:id="@+id/list_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="ContentDescription" />
+        android:text="たいとる"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/rmp_article_title"
+        tools:ignore="SpUsage" />
+
+    <TextView
+        android:id="@+id/list_item_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="著者"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/rmp_article_author"
+        tools:ignore="SpUsage" />
 
     <TextView
         android:id="@+id/list_item_text"

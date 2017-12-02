@@ -1,15 +1,13 @@
 package com.example.maeda_yos.engineerblogs.activity
 
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
-import android.view.View
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.example.maeda_yos.engineerblogs.R
-
 import com.example.maeda_yos.engineerblogs.fragment.BlogFragment
 import com.ogaclejapan.smarttablayout.SmartTabLayout
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter

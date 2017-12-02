@@ -1,4 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="rmp_img_margin">6dp</dimen>
+    <dimen name="rmp_article_margin">6dp</dimen>
+    <dimen name="rmp_article_title">20dp</dimen>
+    <dimen name="rmp_article_author">10dp</dimen>
 </resources>
