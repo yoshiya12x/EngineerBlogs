@@ -9,6 +9,6 @@ import com.example.maeda_yos.engineerblogs.R
 class BlogUrls {
     val blogNames = mapOf(
             R.string.recruit_mp to "https://tech.recruit-mp.co.jp/feed/",
-            R.string.dena to "https://engineer.dena.jp/atom.xml"
+            R.string.eureka to "https://developers.eure.jp/feed/"
     )
 }

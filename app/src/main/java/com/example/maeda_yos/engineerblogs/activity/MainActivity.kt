@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener{
         val adapter = FragmentPagerItemAdapter(
                 supportFragmentManager, FragmentPagerItems.with(this)
                 .add(R.string.recruit_mp, BlogFragment::class.java, BlogFragment.arguments(R.string.recruit_mp))
+                .add(R.string.eureka, BlogFragment::class.java, BlogFragment.arguments(R.string.eureka))
                 .create()
         )
 
