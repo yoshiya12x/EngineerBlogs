@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener{
                 supportFragmentManager, FragmentPagerItems.with(this)
                 .add(R.string.recruit_mp, BlogFragment::class.java, BlogFragment.arguments(R.string.recruit_mp))
                 .add(R.string.eureka, BlogFragment::class.java, BlogFragment.arguments(R.string.eureka))
+                .add(R.string.line, BlogFragment::class.java, BlogFragment.arguments(R.string.line))
                 .create()
         )
 
