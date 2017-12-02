@@ -7,5 +7,5 @@ import android.view.View
  */
 
 interface OnRecyclerListener{
-    fun onRecyclerViewClick(view: View, url: String)
+    fun onRecyclerViewClick(view: View, url: String, title: String)
 }

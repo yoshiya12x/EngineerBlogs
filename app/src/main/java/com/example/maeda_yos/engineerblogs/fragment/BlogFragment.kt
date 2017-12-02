@@ -52,9 +52,10 @@ class BlogFragment : Fragment(), OnRecyclerListener {
         rssParser.setContents(activity, this, recyclerView)
     }
 
-    override fun onRecyclerViewClick(view: View, url: String) {
+    override fun onRecyclerViewClick(view: View, url: String, title: String) {
         val intent = Intent(this.context, ArticleActivity::class.java)
         intent.putExtra("url", url)
+        intent.putExtra("title", title)
         startActivity(intent)
     }
 

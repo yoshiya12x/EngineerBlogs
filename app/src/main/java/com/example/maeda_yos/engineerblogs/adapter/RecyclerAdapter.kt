@@ -35,7 +35,7 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
         holder?.itemAuthor?.text = this.articles!![position].author
         holder?.itemText?.text = this.articles!![position].description
         holder?.itemView?.setOnClickListener{ v ->
-            listener?.onRecyclerViewClick(v, this.articles!![position].link)
+            listener?.onRecyclerViewClick(v, this.articles!![position].link, this.articles!![position].title)
         }
     }
 
