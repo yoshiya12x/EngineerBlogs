@@ -3,7 +3,6 @@ package com.example.maeda_yos.engineerblogs.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -37,7 +36,6 @@ class BlogFragment : Fragment(), OnRecyclerListener {
         val view = inflater!!.inflate(R.layout.content_blog, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(activity)
-        recyclerView.addItemDecoration(DividerItemDecoration(this.context, DividerItemDecoration.VERTICAL))
         return view
     }
 
