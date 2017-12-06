@@ -1,13 +1,14 @@
 package com.example.maeda_yos.engineerblogs.adapter
 
 import android.content.Context
+import android.databinding.DataBindingUtil
+import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.example.maeda_yos.engineerblogs.R
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
+import com.example.maeda_yos.engineerblogs.model.BlogArticle
 import com.prof.rssparser.Article
 
 @Suppress("CAST_NEVER_SUCCEEDS")
@@ -31,9 +32,12 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.itemTitle?.text = this.articles!![position].title
-        holder?.itemAuthor?.text = this.articles!![position].author
-        holder?.itemText?.text = this.articles!![position].description
+        val blogArticle = BlogArticle(
+                this.articles!![position].title,
+                this.articles!![position].author,
+                this.articles!![position].description
+        )
+        holder?.bind(blogArticle)
         holder?.itemView?.setOnClickListener{ v ->
             listener?.onRecyclerViewClick(v, this.articles!![position].link, this.articles!![position].title)
         }
@@ -42,25 +46,16 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
     override fun getItemCount(): Int = articles!!.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        return ViewHolder(this.inflater?.inflate(
-                R.layout.article_item,
-                parent,
-                false
-        ))
+        val layoutInflater = LayoutInflater.from(parent?.context)
+        val binding: ViewDataBinding =
+                DataBindingUtil.inflate(layoutInflater, R.layout.article_item, parent, false)
+        return ViewHolder(binding)
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
-
-        var itemText: TextView? = null
-        var itemTitle: TextView? = null
-        var itemAuthor: TextView? = null
-
-        init {
-            if (itemView != null) {
-                itemText = itemView.findViewById(R.id.list_item_text)
-                itemTitle = itemView.findViewById(R.id.list_item_title)
-                itemAuthor = itemView.findViewById(R.id.list_item_author)
-            }
+    class ViewHolder(private val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: BlogArticle){
+            binding.setVariable(1 ,data)
+            binding.executePendingBindings()
         }
     }
 
