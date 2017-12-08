@@ -32,14 +32,22 @@ class RecyclerAdapter(context: Context, articles: ArrayList<Article>, listener: 
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
+        var title = this.articles!![position].title
+        var author = this.articles!![position].author
+        var description = this.articles!![position].description
+        val link = this.articles!![position].link
+        if(title == null) title = ""
+        if(author == null) author = ""
+        if(description == null) description = ""
+
         val blogArticle = BlogArticle(
-                this.articles!![position].title,
-                this.articles!![position].author,
-                this.articles!![position].description
+                title,
+                author,
+                description
         )
         holder?.bind(blogArticle)
         holder?.itemView?.setOnClickListener{ v ->
-            listener?.onRecyclerViewClick(v, this.articles!![position].link, this.articles!![position].title)
+            listener?.onRecyclerViewClick(v, link, title)
         }
     }
 
