@@ -11,7 +11,7 @@ import com.prof.rssparser.Parser
  * Created by maeda-yos on 2017/11/18.
  */
 
-class RssParser(url: String) {
+class RssParser(url: String){
 
     private var url = ""
 

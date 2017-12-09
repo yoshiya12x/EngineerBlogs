@@ -26,7 +26,6 @@ class BlogFragment : Fragment(), OnRecyclerListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         val keyParam = arguments.getInt("keyParam")
         this.rssParser = RssParser(BlogUrls().blogNames[keyParam]!!)
     }
@@ -41,12 +40,10 @@ class BlogFragment : Fragment(), OnRecyclerListener {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         rssParser.setContents(activity, this, recyclerView)
     }
 
@@ -58,7 +55,6 @@ class BlogFragment : Fragment(), OnRecyclerListener {
     }
 
     companion object {
-
         fun arguments(param: Int): Bundle {
             return Bundler()
                     .putInt("keyParam", param)

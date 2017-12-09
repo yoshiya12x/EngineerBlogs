@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity(), ViewPager.OnPageChangeListener{
         val tabLayout = findViewById<View>(R.id.tabs) as SmartTabLayout
         // xmlからViewPagerを取得
         val viewPager = findViewById<View>(R.id.pager) as ViewPager
+        viewPager.offscreenPageLimit = 5
 
         val adapter = FragmentPagerItemAdapter(
                 supportFragmentManager, FragmentPagerItems.with(this)
