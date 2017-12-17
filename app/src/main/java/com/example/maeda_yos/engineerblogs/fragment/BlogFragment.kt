@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.maeda_yos.engineerblogs.R
 import com.example.maeda_yos.engineerblogs.activity.ArticleActivity
+import com.example.maeda_yos.engineerblogs.listener.EndlessScrollListener
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 import com.example.maeda_yos.engineerblogs.rss.RssParser
 import com.ogaclejapan.smarttablayout.utils.v4.Bundler
@@ -31,10 +33,17 @@ class BlogFragment : Fragment(), OnRecyclerListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View?{
+                              savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.content_blog, container, false)
         recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(activity)
+        val linearLayoutManager = LinearLayoutManager(activity)
+        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.addOnScrollListener(object : EndlessScrollListener(recyclerView.layoutManager as LinearLayoutManager){
+            override fun onLoadMore(current_page: Int) {
+                Log.d("logTest", "onLoadMore")
+            }
+        })
+
         return view
     }
 

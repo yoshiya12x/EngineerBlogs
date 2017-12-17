@@ -2,6 +2,7 @@ package com.example.maeda_yos.engineerblogs.rss
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import com.example.maeda_yos.engineerblogs.adapter.RecyclerAdapter
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
 import com.prof.rssparser.Article
@@ -21,6 +22,7 @@ class RssParser(url: String){
 
     fun setContents(context: Context, onRecyclerListener: OnRecyclerListener, recyclerView: RecyclerView){
         val rssParser = Parser()
+        Log.d("blogUrl", url)
         rssParser.execute(url)
         rssParser.onFinish(object : Parser.OnTaskCompleted{
             override fun onTaskCompleted(list: ArrayList<Article>) {
