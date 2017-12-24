@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,11 +24,14 @@ class BlogFragment : Fragment(), OnRecyclerListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var rssParser: RssParser
+    private var blogTitle = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val keyParam = arguments.getInt("keyParam")
-        this.rssParser = RssParser(BlogUrls().blogNames[keyParam]!!)
+        this.blogTitle = keyParam
+        val url = BlogUrls().blogNames[keyParam]!!
+        this.rssParser = RssParser(url)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -38,9 +40,9 @@ class BlogFragment : Fragment(), OnRecyclerListener {
         recyclerView = view.findViewById(R.id.recycler_view)
         val linearLayoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = linearLayoutManager
-        recyclerView.addOnScrollListener(object : EndlessScrollListener(recyclerView.layoutManager as LinearLayoutManager){
-            override fun onLoadMore(current_page: Int) {
-                Log.d("logTest", "onLoadMore")
+        recyclerView.addOnScrollListener(object : EndlessScrollListener(recyclerView.layoutManager as LinearLayoutManager) {
+            override fun onLoadMore(currentPage: Int) {
+//                rssParser.setNextPage()
             }
         })
 
@@ -53,7 +55,7 @@ class BlogFragment : Fragment(), OnRecyclerListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        rssParser.setContents(activity, this, recyclerView)
+        rssParser.setContents(activity, this, recyclerView, blogTitle)
     }
 
     override fun onRecyclerViewClick(view: View, url: String, title: String) {
