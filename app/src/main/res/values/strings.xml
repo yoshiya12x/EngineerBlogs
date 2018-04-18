@@ -2,8 +2,19 @@
     <string name="app_name">EngineerBlogs</string>
     <string name="action_settings">Settings</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="recruit_mp">リクルートマーケティングパートナーズ</string>
     <string name="eureka">エウレカ</string>
     <string name="line">LINE</string>
+    <string name="techbooster">TECHBOOSTER</string>
+    <string name="azure">Azure</string>
+    <string name="recruit_tech">リクルートテクノロジーズ</string>
+    <string name="android">Android official</string>
+    <string name="lancers">Lancers</string>
+    <string name="dwango">ドワンゴ</string>
+    <string name="smartnews">SmartNews</string>
+    <string name="increments">Increments</string>
+    <string name="recruit_jobs">リクルートジョブズ</string>
+
     <string name="title_activity_article">ArticleActivity</string>
 </resources>

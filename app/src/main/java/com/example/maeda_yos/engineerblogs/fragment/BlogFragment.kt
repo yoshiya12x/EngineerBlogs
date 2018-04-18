@@ -1,5 +1,6 @@
 package com.example.maeda_yos.engineerblogs.fragment
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -12,6 +13,7 @@ import com.example.maeda_yos.engineerblogs.R
 import com.example.maeda_yos.engineerblogs.activity.ArticleActivity
 import com.example.maeda_yos.engineerblogs.listener.EndlessScrollListener
 import com.example.maeda_yos.engineerblogs.listener.OnRecyclerListener
+import com.example.maeda_yos.engineerblogs.model.UserViewModel
 import com.example.maeda_yos.engineerblogs.rss.RssParser
 import com.ogaclejapan.smarttablayout.utils.v4.Bundler
 import define.BlogUrls
@@ -28,6 +30,12 @@ class BlogFragment : Fragment(), OnRecyclerListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // study test
+        val userA = ViewModelProviders.of(this).get(UserViewModel::class.java)
+        val userB = ViewModelProviders.of(activity).get(UserViewModel::class.java)
+        val userC = ViewModelProviders.of(this).get(UserViewModel::class.java)
+
         val keyParam = arguments.getInt("keyParam")
         this.blogTitle = keyParam
         val url = BlogUrls().blogNames[keyParam]!!
